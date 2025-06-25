@@ -1,20 +1,20 @@
 import { test, expect } from '@playwright/test';
 
 test.describe('Página Home - Integração real com banco', () => {
-  const baseUrl = 'http://localhost:5173/Home';
+  const baseUrl = 'https://agulhadeprata.com.br/Home';
 
   test('Deve exibir os produtos e permitir compra com login', async ({ page }) => {
   // Navega para a página de login
-  await page.goto('http://localhost:5173/login');
+  await page.goto('https://agulhadeprata.com.br/login');
 
-  await page.locator('#email').fill('maicon@gmail.com');    
+  await page.locator('#email').fill('keila@gmail.com');    
   await page.locator('#password').fill('Emilly@123');               
 
 
   await page.click('button[type="submit"]');
 
   
-  await page.waitForURL('http://localhost:5173/Home');
+  await page.waitForURL('https://agulhadeprata.com.br/Home');
 
   
   await page.waitForTimeout(1000);

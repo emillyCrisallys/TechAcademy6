@@ -30,17 +30,17 @@ test.describe('UserPerfil', async () => {
 
   test('Deve carregar dados do usuário e permitir atualizar nome e senha', async ({ page }) => {
     // 🔐 Login real
-    await page.goto("http://localhost:5173/login"); // ajuste se necessário
+    await page.goto("https://agulhadeprata.com.br/login"); // ajuste se necessário
 
-    await page.locator('#email').fill('maicon@gmail.com');     // substitua pelo email real de teste
-    await page.locator('#password').fill('Emilly@123');           // substitua pela senha real
+    await page.locator('#email').fill('maiconTeste@teste.com');     // substitua pelo email real de teste
+    await page.locator('#password').fill('Senha@123');           // substitua pela senha real
     await page.getByRole('button', { name: 'Entrar' }).click();
 
     // Espera redirecionar pro /Home (ou outro)
-    await page.waitForURL("http://localhost:5173/Home");
+    await page.waitForURL("https://agulhadeprata.com.br/Home");
 
     // Acessa o perfil
-    await page.goto("http://localhost:5173/UserPerfil");
+    await page.goto("https://agulhadeprata.com.br/UserPerfil");
 
     // Aguarda os inputs do perfil
     await expect(page.locator('input#name')).not.toHaveValue('', { timeout: 8000 });
@@ -62,7 +62,7 @@ test.describe('UserPerfil', async () => {
   
 
   test('Deve mostrar erro ao tentar atualizar com senha inválida', async ({ page }) => {
-    await page.goto("http://localhost:5173/UserPerfil");
+    await page.goto("https://agulhadeprata.com.br/UserPerfil");
     await page.waitForTimeout(1000);
     await page.fill('input#name', 'Novo Nome');
     await page.fill('input#password', 'abc');
@@ -78,7 +78,7 @@ test.describe('UserPerfil', async () => {
   });
 
   test('Deve excluir conta após confirmação', async ({ page }) => {
-    await page.goto("http://localhost:5173/UserPerfil");
+    await page.goto("https://agulhadeprata.com.br/UserPerfil");
     await page.waitForTimeout(60000);
     page.on('dialog', (dialog) => dialog.accept());
 

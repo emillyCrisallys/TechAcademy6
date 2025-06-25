@@ -1,28 +1,28 @@
 import { test, expect } from '@playwright/test'
 
 test.describe('Cadastro de Usuário', () => {
-  const baseUrl = 'http://localhost:5173/Cadastro' // confirme a rota
+  const baseUrl = 'https://agulhadeprata.com.br/Cadastro' 
 
   test('Cadastro com sucesso', async ({ page }) => {
     await page.goto(baseUrl)
 
     // Preenche os campos com dados válidos
-    await page.locator('#name').fill('maicon')
-    await page.locator('#email').fill(`maicon@teste.com`) // email único
-    await page.locator('#document').fill('056.312.810-07') // CPF com 11 dígitos
-    await page.locator('#password').fill('Senha@123') // senha forte
+    await page.locator('#name').fill('maiconT')
+    await page.locator('#email').fill(`maiconT@teste.com`) 
+    await page.locator('#document').fill('731.194.150-49') 
+    await page.locator('#password').fill('Senha@123') 
 
     await page.getByRole('button', { name: 'Cadastrar' }).click()
 
     // Aumenta timeout para aguardar redirecionamento
-    await expect(page).toHaveURL('http://localhost:5173/login', { timeout: 10000 })
+    await expect(page).toHaveURL('https://agulhadeprata.com.br/login', { timeout: 10000 })
   })
 
   test('Cadastro com erro por email inválido', async ({ page }) => {
     await page.goto(baseUrl)
 
     await page.locator('#name').fill('Joao Teste')
-    await page.locator('#email').fill('invalidoemail.com') // inválido
+    await page.locator('#email').fill('invalidoemail.com') 
     await page.locator('#document').fill('12345678901')
     await page.locator('#password').fill('Senha@123')
 
@@ -54,7 +54,7 @@ test.describe('Cadastro de Usuário', () => {
     await page.locator('#name').fill('Teste Fraco')
     await page.locator('#email').fill(`fraco${Date.now()}@teste.com`)
     await page.locator('#document').fill('12345678901')
-    await page.locator('#password').fill('12345678') // sem maiúscula e especial
+    await page.locator('#password').fill('12345678') 
 
     await page.getByRole('button', { name: 'Cadastrar' }).click()
 

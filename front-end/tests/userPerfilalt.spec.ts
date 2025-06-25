@@ -5,17 +5,17 @@ test.describe('UserPerfilalt', () => {
 
   test('Deve carregar dados do usuário e permitir atualizar nome e senha', async ({ page }) => {
     // 🔐 Login real
-    await page.goto("http://localhost:5173/login"); // ajuste se necessário
+    await page.goto("https://agulhadeprata.com.br/login"); // ajuste se necessário
 
     await page.locator('#email').fill('maicon@gmail.com');     // substitua pelo email real de teste
     await page.locator('#password').fill('Emilly@123');           // substitua pela senha real
     await page.getByRole('button', { name: 'Entrar' }).click();
 
     // Espera redirecionar pro /Home (ou outro)
-    await page.waitForURL("http://localhost:5173/Home");
+    await page.waitForURL("https://agulhadeprata.com.br/Home");
 
     // Acessa o perfil
-    await page.goto("http://localhost:5173/UserPerfil");
+    await page.goto("https://agulhadeprata.com.br/UserPerfil");
 
     // Aguarda os inputs do perfil
     await expect(page.locator('input#name')).not.toHaveValue('', { timeout: 8000 });
