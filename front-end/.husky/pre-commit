@@ -1,1 +1,1 @@
-echo '✔️ Pre-commit: Nenhuma validação aplicada por enquanto'
+npm run end-2-end
