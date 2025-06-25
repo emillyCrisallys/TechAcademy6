@@ -7,8 +7,8 @@ test.describe('Página Home - Integração real com banco', () => {
   // Navega para a página de login
   await page.goto('http://localhost:5173/login');
 
-  await page.locator('#email').fill('maicon@gmail.com');     // substitua pelo email real de teste
-  await page.locator('#password').fill('Emilly@123');                   // ajuste a senha
+  await page.locator('#email').fill('maicon@gmail.com');    
+  await page.locator('#password').fill('Emilly@123');               
 
 
   await page.click('button[type="submit"]');
@@ -51,7 +51,7 @@ test.describe('Página Home - Integração real com banco', () => {
     await page.goto(baseUrl);
     await page.waitForTimeout(1000);
 
-    const produtoSemEstoque = page.getByText('RUBY'); // nome do produto com stock 0
+    const produtoSemEstoque = page.getByText('RUBY'); 
     await expect(produtoSemEstoque).toBeVisible();
 
     const botao = await produtoSemEstoque.locator('..').getByRole('button', { name: 'Comprar' });
