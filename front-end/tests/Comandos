@@ -1,0 +1,3 @@
+npx playwright test --headed -g "UserPerfil"
+npx playwright test tests/register.spec.ts     
+npx playwright test tests/cart.spec.ts         
